@@ -1,24 +1,30 @@
 package com.tci.service;
 
 
+import com.tci.controller.ScaleController;
 import com.tci.model.ScaleValue;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 
 @Service
-//@EnableAsync
+@EnableAsync
+@Configuration
 public class ScaleServiceAsync {
 
-
-//    @Autowired
-//    private SimpMessagingTemplate template;
-
-    public void sendScaleValeu(){
+    @Autowired
+    private SimpMessagingTemplate template;
+    @Async
+    public double sendScaleValue(String scale_id){
         // TODO connect scale use socket
-//        while (true){
-//            template.convertAndSend("/topic/", new ScaleValue());
-//        }
+        System.out.println("ScaleServiceAsync");
+        while (true) {
+                template.convertAndSend("/topic/scale", new ScaleValue());
+            }
+
     }
+
 }

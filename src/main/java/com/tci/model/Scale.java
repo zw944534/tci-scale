@@ -2,7 +2,7 @@ package com.tci.model;
 
 public class Scale {
 
-    private String id;
+    private String id="scale_01";
 
     public Scale(){
 
